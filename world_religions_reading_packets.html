@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Religions Reading Packets — Grade 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sikh-primary: #1a4a2e; --sikh-accent: #d4a843; --sikh-light: #f0f7f1; --sikh-mid: #2d7a4f;
+    --jain-primary: #5c2d91; --jain-accent: #e8a020; --jain-light: #f5f0fb; --jain-mid: #8a4cc4;
+    --shinto-primary: #8b1a1a; --shinto-accent: #e8c4a0; --shinto-light: #fdf5f0; --shinto-mid: #c43c3c;
+    --bahai-primary: #1a3a6b; --bahai-accent: #c9a84c; --bahai-light: #f0f4fb; --bahai-mid: #2d5fac;
+    --zoro-primary: #7a3a00; --zoro-accent: #f0c040; --zoro-light: #fdf6ec; --zoro-mid: #c26010;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Source Serif 4',Georgia,serif; background:#f8f5ef; color:#2a2a2a; font-size:16px; line-height:1.75; }
+
+  /* COVER */
+  .cover { min-height:100vh; background:#1a1a2e; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 40px; position:relative; overflow:hidden; }
+  .cover::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 40%,rgba(100,60,180,.25) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(30,100,70,.2) 0%,transparent 50%); }
+
+  .cover-symbols { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-bottom:40px; position:relative; z-index:1; }
+  .cover-sym-wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .cover-sym { width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; border:2px solid rgba(255,255,255,.25); color:#fff; }
+  .sym-sikh   { background:rgba(45,122,79,.7); }
+  .sym-jain   { background:rgba(138,76,196,.7); }
+  .sym-shinto { background:rgba(196,60,60,.7); }
+  .sym-bahai  { background:rgba(45,95,172,.7); }
+  .sym-zoro   { background:rgba(194,96,16,.7); }
+  .cover-sym-label { font-family:'Playfair Display',serif; font-size:11px; color:rgba(255,255,255,.65); letter-spacing:.5px; }
+
+  .cover h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,6vw,60px); font-weight:900; color:#fff; line-height:1.1; position:relative; z-index:1; margin-bottom:12px; }
+  .cover h1 span { color:#d4a843; display:block; }
+  .cover-subtitle { font-family:'Source Serif 4',serif; font-size:19px; color:rgba(255,255,255,.65); position:relative; z-index:1; margin-bottom:10px; font-style:italic; font-weight:300; }
+  .cover-grade { position:relative; z-index:1; color:rgba(255,255,255,.35); font-size:12px; letter-spacing:3px; text-transform:uppercase; }
+
+  /* NAV */
+  .nav { position:sticky; top:0; z-index:100; background:#1a1a2e; display:flex; justify-content:center; flex-wrap:wrap; border-bottom:3px solid rgba(255,255,255,.1); box-shadow:0 2px 20px rgba(0,0,0,.3); }
+  .nav-btn { padding:13px 18px; background:none; border:none; cursor:pointer; font-family:'Playfair Display',serif; font-size:13px; font-weight:700; color:rgba(255,255,255,.45); transition:all .2s; border-bottom:3px solid transparent; margin-bottom:-3px; white-space:nowrap; }
+  .nav-btn:hover { color:rgba(255,255,255,.85); }
+  .nav-btn.active { color:#fff; border-bottom-color:#d4a843; }
+
+  /* PACKETS */
+  .packet { display:none; }
+  .packet.active { display:block; }
+
+  /* HERO */
+  .packet-hero { padding:56px 40px 36px; text-align:center; }
+  .hero-sikh{background:var(--sikh-primary)} .hero-jain{background:var(--jain-primary)} .hero-shinto{background:var(--shinto-primary)} .hero-bahai{background:var(--bahai-primary)} .hero-zoro{background:var(--zoro-primary)}
+  .hero-symbol { font-size:54px; margin-bottom:14px; display:block; color:#fff; }
+  .packet-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,52px); font-weight:900; color:#fff; margin-bottom:8px; }
+  .hero-tagline { font-size:16px; color:rgba(255,255,255,.72); font-style:italic; font-weight:300; }
+  .hero-accent-bar { width:56px; height:4px; margin:18px auto 0; border-radius:2px; }
+  .bar-sikh{background:var(--sikh-accent)} .bar-jain{background:var(--jain-accent)} .bar-shinto{background:var(--shinto-accent)} .bar-bahai{background:var(--bahai-accent)} .bar-zoro{background:var(--zoro-accent)}
+
+  /* QUICK FACTS */
+  .quick-facts { display:flex; flex-wrap:wrap; border-bottom:1px solid rgba(0,0,0,.08); }
+  .fact-item { flex:1; min-width:130px; padding:18px; border-right:1px solid rgba(0,0,0,.08); text-align:center; }
+  .fact-item:last-child { border-right:none; }
+  .fact-label { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#888; margin-bottom:5px; font-weight:600; }
+  .fact-value { font-family:'Playfair Display',serif; font-size:15px; font-weight:700; line-height:1.3; }
+  .val-sikh{color:var(--sikh-primary)} .val-jain{color:var(--jain-primary)} .val-shinto{color:var(--shinto-primary)} .val-bahai{color:var(--bahai-primary)} .val-zoro{color:var(--zoro-primary)}
+
+  /* CONTENT */
+  .content-area { max-width:860px; margin:0 auto; padding:44px 36px; }
+
+  /* SECTION CARDS */
+  .section-card { border-radius:12px; margin-bottom:28px; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,.07); border:1px solid rgba(0,0,0,.06); }
+  .section-header { padding:16px 26px; display:flex; align-items:center; gap:12px; }
+  .hdr-sikh{background:var(--sikh-primary)} .hdr-jain{background:var(--jain-primary)} .hdr-shinto{background:var(--shinto-primary)} .hdr-bahai{background:var(--bahai-primary)} .hdr-zoro{background:var(--zoro-primary)}
+  .section-icon { font-size:20px; flex-shrink:0; }
+  .section-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:#fff; }
+  .section-body { padding:26px; background:#fff; }
+  .section-body p { margin-bottom:13px; font-size:15px; line-height:1.8; }
+  .section-body p:last-child { margin-bottom:0; }
+
+  /* VOCAB */
+  .vocab-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; padding:22px 26px; background:#fff; }
+  .vocab-card { border-radius:8px; padding:13px 15px; border-left:4px solid; }
+  .vc-sikh{background:var(--sikh-light);border-color:var(--sikh-mid)} .vc-jain{background:var(--jain-light);border-color:var(--jain-mid)} .vc-shinto{background:var(--shinto-light);border-color:var(--shinto-mid)} .vc-bahai{background:var(--bahai-light);border-color:var(--bahai-mid)} .vc-zoro{background:var(--zoro-light);border-color:var(--zoro-mid)}
+  .vocab-term { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; margin-bottom:3px; }
+  .vt-sikh{color:var(--sikh-primary)} .vt-jain{color:var(--jain-primary)} .vt-shinto{color:var(--shinto-primary)} .vt-bahai{color:var(--bahai-primary)} .vt-zoro{color:var(--zoro-primary)}
+  .vocab-def { font-size:13px; color:#444; line-height:1.5; font-style:italic; }
+
+  /* BELIEFS */
+  .belief-list { padding:22px 26px; background:#fff; display:flex; flex-direction:column; gap:11px; }
+  .belief-item { display:flex; align-items:flex-start; gap:13px; padding:13px 15px; border-radius:8px; font-size:14.5px; line-height:1.65; }
+  .bi-sikh{background:var(--sikh-light)} .bi-jain{background:var(--jain-light)} .bi-shinto{background:var(--shinto-light)} .bi-bahai{background:var(--bahai-light)} .bi-zoro{background:var(--zoro-light)}
+  .belief-num { font-family:'Playfair Display',serif; font-size:22px; font-weight:900; line-height:1; min-width:30px; padding-top:1px; }
+  .bn-sikh{color:var(--sikh-mid)} .bn-jain{color:var(--jain-mid)} .bn-shinto{color:var(--shinto-mid)} .bn-bahai{color:var(--bahai-mid)} .bn-zoro{color:var(--zoro-mid)}
+  .belief-text strong { font-weight:600; font-style:italic; }
+
+  /* PRACTICES */
+  .practices-grid { padding:22px 26px; background:#fff; display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr)); gap:13px; }
+  .practice-card { border-radius:10px; padding:16px 14px; text-align:center; }
+  .pc-sikh{background:var(--sikh-light);border:1px solid rgba(26,74,46,.15)} .pc-jain{background:var(--jain-light);border:1px solid rgba(92,45,145,.15)} .pc-shinto{background:var(--shinto-light);border:1px solid rgba(139,26,26,.15)} .pc-bahai{background:var(--bahai-light);border:1px solid rgba(26,58,107,.15)} .pc-zoro{background:var(--zoro-light);border:1px solid rgba(122,58,0,.15)}
+  .practice-icon { font-size:26px; margin-bottom:9px; }
+  .practice-name { font-family:'Playfair Display',serif; font-size:13px; font-weight:700; margin-bottom:5px; }
+  .pn-sikh{color:var(--sikh-primary)} .pn-jain{color:var(--jain-primary)} .pn-shinto{color:var(--shinto-primary)} .pn-bahai{color:var(--bahai-primary)} .pn-zoro{color:var(--zoro-primary)}
+  .practice-desc { font-size:12.5px; color:#555; line-height:1.5; }
+
+  /* BELONGING */
+  .belonging-body { padding:26px; background:#fff; display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+  .belong-item { border-radius:10px; padding:16px; }
+  .belong-sikh{background:linear-gradient(135deg,rgba(26,74,46,.08),rgba(26,74,46,.03));border:1px solid rgba(26,74,46,.12)}
+  .belong-jain{background:linear-gradient(135deg,rgba(92,45,145,.08),rgba(92,45,145,.03));border:1px solid rgba(92,45,145,.12)}
+  .belong-shinto{background:linear-gradient(135deg,rgba(139,26,26,.08),rgba(139,26,26,.03));border:1px solid rgba(139,26,26,.12)}
+  .belong-bahai{background:linear-gradient(135deg,rgba(26,58,107,.08),rgba(26,58,107,.03));border:1px solid rgba(26,58,107,.12)}
+  .belong-zoro{background:linear-gradient(135deg,rgba(122,58,0,.08),rgba(122,58,0,.03));border:1px solid rgba(122,58,0,.12)}
+  .belong-title { font-family:'Playfair Display',serif; font-size:13.5px; font-weight:700; margin-bottom:5px; display:flex; align-items:center; gap:7px; }
+  .bt-sikh{color:var(--sikh-primary)} .bt-jain{color:var(--jain-primary)} .bt-shinto{color:var(--shinto-primary)} .bt-bahai{color:var(--bahai-primary)} .bt-zoro{color:var(--zoro-primary)}
+  .belong-desc { font-size:13px; color:#444; line-height:1.55; }
+
+  /* FIGURES */
+  .figures-row { padding:22px 26px; background:#fff; display:flex; flex-wrap:wrap; gap:14px; }
+  .figure-card { flex:1; min-width:170px; padding:16px; border-radius:10px; text-align:center; }
+  .fc-sikh{background:var(--sikh-light);border:1px solid rgba(26,74,46,.15)} .fc-jain{background:var(--jain-light);border:1px solid rgba(92,45,145,.15)} .fc-shinto{background:var(--shinto-light);border:1px solid rgba(139,26,26,.15)} .fc-bahai{background:var(--bahai-light);border:1px solid rgba(26,58,107,.15)} .fc-zoro{background:var(--zoro-light);border:1px solid rgba(122,58,0,.15)}
+  .figure-emoji { font-size:30px; margin-bottom:7px; }
+  .figure-name { font-family:'Playfair Display',serif; font-size:13.5px; font-weight:700; margin-bottom:3px; }
+  .fn-sikh{color:var(--sikh-primary)} .fn-jain{color:var(--jain-primary)} .fn-shinto{color:var(--shinto-primary)} .fn-bahai{color:var(--bahai-primary)} .fn-zoro{color:var(--zoro-primary)}
+  .figure-role { font-size:11.5px; color:#777; font-style:italic; margin-bottom:5px; }
+  .figure-desc { font-size:12.5px; color:#444; line-height:1.5; }
+
+  /* MAP */
+  .origin-visual { padding:22px 26px 0; background:#fff; }
+  .origin-map { background:#f0f4f8; border-radius:10px; padding:18px; display:flex; align-items:center; gap:18px; margin-bottom:18px; }
+  .map-pin-area { flex-shrink:0; width:66px; height:66px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; border:3px solid; }
+  .mpa-sikh{background:var(--sikh-light);border-color:var(--sikh-mid)} .mpa-jain{background:var(--jain-light);border-color:var(--jain-mid)} .mpa-shinto{background:var(--shinto-light);border-color:var(--shinto-mid)} .mpa-bahai{background:var(--bahai-light);border-color:var(--bahai-mid)} .mpa-zoro{background:var(--zoro-light);border-color:var(--zoro-mid)}
+  .map-info h3 { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; margin-bottom:4px; }
+  .map-info p { font-size:13.5px; color:#555; line-height:1.55; }
+  .mi-sikh h3{color:var(--sikh-primary)} .mi-jain h3{color:var(--jain-primary)} .mi-shinto h3{color:var(--shinto-primary)} .mi-bahai h3{color:var(--bahai-primary)} .mi-zoro h3{color:var(--zoro-primary)}
+
+  /* DID YOU KNOW */
+  .dyk-box { margin:0 26px 26px; padding:16px 20px; border-radius:10px; display:flex; align-items:flex-start; gap:13px; }
+  .dyk-sikh{background:rgba(212,168,67,.14);border:1px solid rgba(212,168,67,.4)} .dyk-jain{background:rgba(232,160,32,.11);border:1px solid rgba(232,160,32,.4)} .dyk-shinto{background:rgba(232,196,160,.22);border:1px solid rgba(196,60,60,.25)} .dyk-bahai{background:rgba(201,168,76,.13);border:1px solid rgba(201,168,76,.4)} .dyk-zoro{background:rgba(240,192,64,.13);border:1px solid rgba(194,96,16,.4)}
+  .dyk-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+  .dyk-text { font-size:13.5px; color:#333; line-height:1.65; }
+  .dyk-text strong { font-family:'Playfair Display',serif; font-size:12px; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:4px; }
+
+  @media print { .nav,.cover{display:none} .packet{display:block!important;page-break-before:always} }
+  @media(max-width:600px) { .content-area{padding:20px 14px} .fact-item{min-width:110px;padding:12px} .nav-btn{padding:11px 10px;font-size:11px} }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-symbols">
+    <div class="cover-sym-wrap"><div class="cover-sym sym-sikh">☬</div><span class="cover-sym-label">Sikhism</span></div>
+    <div class="cover-sym-wrap"><div class="cover-sym sym-jain">🕊️</div><span class="cover-sym-label">Jainism</span></div>
+    <div class="cover-sym-wrap"><div class="cover-sym sym-shinto">⛩️</div><span class="cover-sym-label">Shinto</span></div>
+    <div class="cover-sym-wrap"><div class="cover-sym sym-bahai">✦</div><span class="cover-sym-label">Bahá'í</span></div>
+    <div class="cover-sym-wrap"><div class="cover-sym sym-zoro">🔥</div><span class="cover-sym-label">Zoroastrianism</span></div>
+  </div>
+  <h1>World Religions<span>Reading Packets</span></h1>
+  <p class="cover-subtitle">Exploring Beliefs, Behaviors & Belonging</p>
+  <p class="cover-grade">Social Studies · Grade 6</p>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="showPacket('sikh',this)">☬ Sikhism</button>
+  <button class="nav-btn" onclick="showPacket('jain',this)">🕊 Jainism</button>
+  <button class="nav-btn" onclick="showPacket('shinto',this)">⛩️ Shinto</button>
+  <button class="nav-btn" onclick="showPacket('bahai',this)">✦ Bahá'í</button>
+  <button class="nav-btn" onclick="showPacket('zoro',this)">🔥 Zoroastrianism</button>
+</nav>
+
+<!-- ══════════════════ SIKHISM ══════════════════ -->
+<div class="packet active" id="packet-sikh">
+  <div class="packet-hero hero-sikh"><span class="hero-symbol">☬</span><h1>Sikhism</h1><p class="hero-tagline">"There is only One God, and all are equal before that God."</p><div class="hero-accent-bar bar-sikh"></div></div>
+  <div class="quick-facts">
+    <div class="fact-item"><div class="fact-label">Founded</div><div class="fact-value val-sikh">~1500 CE</div></div>
+    <div class="fact-item"><div class="fact-label">Origin</div><div class="fact-value val-sikh">Punjab Region (India/Pakistan)</div></div>
+    <div class="fact-item"><div class="fact-label">Followers</div><div class="fact-value val-sikh">~30 Million</div></div>
+    <div class="fact-item"><div class="fact-label">Holy Book</div><div class="fact-value val-sikh">Guru Granth Sahib</div></div>
+    <div class="fact-item"><div class="fact-label">House of Worship</div><div class="fact-value val-sikh">Gurdwara</div></div>
+  </div>
+  <div class="content-area">
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">🗺️</span><h2 class="section-title">Historical Origin & Geography</h2></div>
+      <div class="origin-visual"><div class="origin-map"><div class="map-pin-area mpa-sikh">🏔️</div><div class="map-info mi-sikh"><h3>The Punjab Region</h3><p>Sikhism began in the <strong>Punjab</strong> — a fertile region in northwestern South Asia split today between <strong>India</strong> and <strong>Pakistan</strong>. "Punjab" means "Land of Five Rivers."</p></div></div></div>
+      <div class="section-body" style="padding-top:0"><p>In the late 1400s, the Punjab was a crossroads of <strong>Hinduism</strong> (many gods, caste system) and <strong>Islam</strong> (one God). Many people were divided by religion, caste, and social class.</p><p>Into this world was born <strong>Guru Nanak</strong>, who taught a new message: there is only one God, all people are equal, and love, service, and honest living — not rigid rituals — are the path to God.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">✨</span><h2 class="section-title">The Origin Story</h2></div>
+      <div class="section-body"><p>Around <strong>1499</strong>, Guru Nanak went to bathe in a river and disappeared beneath the water for three days. When he emerged, he said: <em>"There is no Hindu, there is no Muslim."</em></p><p>Sikhs believe Nanak was taken into God's presence and given a divine mission. He spent 25 years traveling across South Asia sharing his message of unity through devotional songs called <em>shabads</em>.</p><p>After Nanak, nine more Gurus (teachers) continued his work. The tenth, <strong>Guru Gobind Singh</strong>, declared that after him, the holy scripture itself would be the eternal Guru.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">👤</span><h2 class="section-title">Key Figures</h2></div>
+      <div class="figures-row">
+        <div class="figure-card fc-sikh"><div class="figure-emoji">🌟</div><div class="figure-name fn-sikh">Guru Nanak Dev Ji</div><div class="figure-role">1st Guru (1469–1539)</div><div class="figure-desc">Founder of Sikhism. Taught that God is everywhere, all people are equal, and honest work combined with sharing is the path to God.</div></div>
+        <div class="figure-card fc-sikh"><div class="figure-emoji">⚔️</div><div class="figure-name fn-sikh">Guru Gobind Singh Ji</div><div class="figure-role">10th Guru (1666–1708)</div><div class="figure-desc">Founded the Khalsa in 1699 and established the "Five Ks." Declared the holy scripture the eternal living Guru.</div></div>
+        <div class="figure-card fc-sikh"><div class="figure-emoji">📖</div><div class="figure-name fn-sikh">Guru Granth Sahib</div><div class="figure-role">The Eternal Guru</div><div class="figure-desc">The holy scripture containing over 5,800 hymns. Sikhs treat it with the same reverence they would give a living Guru.</div></div>
+        <div class="figure-card fc-sikh"><div class="figure-emoji">🌺</div><div class="figure-name fn-sikh">Guru Arjan Dev Ji</div><div class="figure-role">5th Guru (1563–1606)</div><div class="figure-desc">Built the Golden Temple in Amritsar and compiled the Sikh scripture. Became the first Sikh martyr.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">💡</span><h2 class="section-title">Core Beliefs (The "B" of Belief)</h2></div>
+      <div class="belief-list">
+        <div class="belief-item bi-sikh"><span class="belief-num bn-sikh">1</span><div class="belief-text"><strong>Ik Onkar — One God:</strong> There is only one God (called Waheguru). He created everything, is everywhere, has no gender or physical form, and loves all people equally.</div></div>
+        <div class="belief-item bi-sikh"><span class="belief-num bn-sikh">2</span><div class="belief-text"><strong>Equality of All People:</strong> Sikhism strongly rejects the caste system. Every person — regardless of gender, race, or religion — is equally valuable in God's eyes.</div></div>
+        <div class="belief-item bi-sikh"><span class="belief-num bn-sikh">3</span><div class="belief-text"><strong>Three Pillars of Life:</strong> <em>Nam Japna</em> (meditating on God), <em>Kirat Karni</em> (honest work), and <em>Vand Chakna</em> (sharing with others) define how a Sikh should live every single day.</div></div>
+        <div class="belief-item bi-sikh"><span class="belief-num bn-sikh">4</span><div class="belief-text"><strong>Karma and Reincarnation:</strong> The soul is reborn many times, shaped by one's actions (karma). The goal is to break free from the cycle of rebirth and unite with God — called <em>Mukti</em>.</div></div>
+        <div class="belief-item bi-sikh"><span class="belief-num bn-sikh">5</span><div class="belief-text"><strong>No Idol Worship:</strong> Sikhs do not worship statues. Prayer and meditation focus on the inner spirit, not outward rituals or physical images of God.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">🕊️</span><h2 class="section-title">Practices (The "B" of Behavior)</h2></div>
+      <div class="practices-grid">
+        <div class="practice-card pc-sikh"><div class="practice-icon">🍽️</div><div class="practice-name pn-sikh">Langar (Free Kitchen)</div><div class="practice-desc">Every Gurdwara runs a free kitchen open to all people regardless of religion. Volunteers cook and serve meals as an act of service and equality.</div></div>
+        <div class="practice-card pc-sikh"><div class="practice-icon">🎵</div><div class="practice-name pn-sikh">Kirtan (Sacred Music)</div><div class="practice-desc">Devotional singing of hymns from the scripture. Music is central to Sikh worship, performed live with traditional instruments.</div></div>
+        <div class="practice-card pc-sikh"><div class="practice-icon">☬</div><div class="practice-name pn-sikh">The Five Ks</div><div class="practice-desc">Initiated Sikhs wear five articles of faith: uncut hair, a comb, a steel bracelet, an undergarment, and a small ceremonial sword.</div></div>
+        <div class="practice-card pc-sikh"><div class="practice-icon">🙏</div><div class="practice-name pn-sikh">Nitnem (Daily Prayer)</div><div class="practice-desc">Devout Sikhs recite specific prayers three times a day — morning, evening, and night — as part of a daily spiritual routine.</div></div>
+        <div class="practice-card pc-sikh"><div class="practice-icon">🫂</div><div class="practice-name pn-sikh">Seva (Selfless Service)</div><div class="practice-desc">Volunteering and serving others without pay or recognition. Sikhs believe serving others is the same as serving God directly.</div></div>
+        <div class="practice-card pc-sikh"><div class="practice-icon">📖</div><div class="practice-name pn-sikh">Ardas (Community Prayer)</div><div class="practice-desc">A formal standing prayer at the Gurdwara or at home, beginning by remembering the Ten Gurus and asking blessings for all humanity.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">🤝</span><h2 class="section-title">Community & Belonging (The "B" of Belonging)</h2></div>
+      <div class="belonging-body">
+        <div class="belong-item belong-sikh"><div class="belong-title bt-sikh">🏛️ The Gurdwara</div><div class="belong-desc">Open to everyone — Sikh or not. Visitors remove shoes and cover their heads. The Gurdwara is the center of Sikh community life.</div></div>
+        <div class="belong-item belong-sikh"><div class="belong-title bt-sikh">🌍 The Sangat</div><div class="belong-desc">The congregation of Sikhs who gather to pray, serve, and support one another — a spiritual family open to all.</div></div>
+        <div class="belong-item belong-sikh"><div class="belong-title bt-sikh">💛 The Khalsa</div><div class="belong-desc">Initiated Sikhs join a global community of equals. All men use "Singh" (Lion) and women "Kaur" (Princess) as surnames — a powerful shared identity.</div></div>
+        <div class="belong-item belong-sikh"><div class="belong-title bt-sikh">🎉 Gurpurabs (Festivals)</div><div class="belong-desc">Festivals celebrating the Gurus' birthdays, with processions, music, and community meals that bring Sikhs together in joy and remembrance.</div></div>
+        <div class="belong-item belong-sikh"><div class="belong-title bt-sikh">🌐 Global Community</div><div class="belong-desc">Large Sikh communities in India, the UK, Canada, and the US feel connected through shared identity, langar, and shared values of equality and service.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-sikh"><span class="section-icon">📚</span><h2 class="section-title">Key Vocabulary</h2></div>
+      <div class="vocab-grid">
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Waheguru</div><div class="vocab-def">The Sikh name for God, meaning "Wonderful Lord" or "Wondrous Enlightener"</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Guru</div><div class="vocab-def">A spiritual teacher or guide; refers to the Ten Gurus and the eternal Guru Granth Sahib</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Gurdwara</div><div class="vocab-def">The Sikh place of worship; literally "Gateway to the Guru," open to all people</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Langar</div><div class="vocab-def">The free community kitchen found in every Gurdwara, open to all regardless of background</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Khalsa</div><div class="vocab-def">The community of baptized Sikhs, founded in 1699 by Guru Gobind Singh</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Seva</div><div class="vocab-def">Selfless service; helping others without reward, considered a form of worship</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Ik Onkar</div><div class="vocab-def">Sikhism's central statement meaning "There is One God"</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Sangat</div><div class="vocab-def">The congregation or spiritual community of Sikhs who gather to worship together</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Turban (Dastar)</div><div class="vocab-def">A cloth head covering worn by many Sikhs as a symbol of honor, dignity, and faith</div></div>
+        <div class="vocab-card vc-sikh"><div class="vocab-term vt-sikh">Mukti</div><div class="vocab-def">Spiritual liberation — freedom from the cycle of rebirth and union with God</div></div>
+      </div>
+    </div>
+    <div class="dyk-box dyk-sikh"><span class="dyk-icon">💡</span><div class="dyk-text"><strong>Did You Know?</strong>The Golden Temple in Amritsar, India, has <em>four doors</em> — one on each side — to symbolize it is open to people from all directions and all walks of life. Its free kitchen serves over 100,000 meals every single day!</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ JAINISM ══════════════════ -->
+<div class="packet" id="packet-jain">
+  <div class="packet-hero hero-jain"><span class="hero-symbol">🕊️</span><h1>Jainism</h1><p class="hero-tagline">"Live and let live. Harm no living being."</p><div class="hero-accent-bar bar-jain"></div></div>
+  <div class="quick-facts">
+    <div class="fact-item"><div class="fact-label">Founded</div><div class="fact-value val-jain">~600 BCE (or earlier)</div></div>
+    <div class="fact-item"><div class="fact-label">Origin</div><div class="fact-value val-jain">Ancient India</div></div>
+    <div class="fact-item"><div class="fact-label">Followers</div><div class="fact-value val-jain">~4–6 Million</div></div>
+    <div class="fact-item"><div class="fact-label">Holy Texts</div><div class="fact-value val-jain">Agamas</div></div>
+    <div class="fact-item"><div class="fact-label">House of Worship</div><div class="fact-value val-jain">Derasar / Temple</div></div>
+  </div>
+  <div class="content-area">
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">🗺️</span><h2 class="section-title">Historical Origin & Geography</h2></div>
+      <div class="origin-visual"><div class="origin-map"><div class="map-pin-area mpa-jain">🏛️</div><div class="map-info mi-jain"><h3>The Ganges Plain, India</h3><p>Jainism originated in <strong>northeastern India</strong>, in the ancient kingdoms along the Ganges River — present-day <strong>Bihar and Uttar Pradesh</strong>. Buddhism also arose here around the same period.</p></div></div></div>
+      <div class="section-body" style="padding-top:0"><p>Jainism is one of the <strong>oldest religions in the world</strong>. Around <strong>600 BCE</strong>, Mahavira revived and organized its teachings at a time when Indian society was dominated by Hindu rituals and social inequality. Mahavira rejected this, teaching that any person could achieve liberation through nonviolence, truthfulness, and self-discipline.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">✨</span><h2 class="section-title">The Origin Story</h2></div>
+      <div class="section-body"><p><strong>Vardhamana</strong> was born around 599 BCE into a noble family in Bihar, India. At age 30, he gave up all his wealth, left his family, and became a wandering monk with almost nothing.</p><p>For <strong>12 years</strong>, he practiced extreme discipline — fasting, remaining completely still during meditation, moving carefully to avoid harming even tiny insects. At the end of 12 years, he achieved <em>Kevala Jnana</em> — perfect, unlimited knowledge.</p><p>He became known as <strong>Mahavira</strong> ("Great Hero") and <strong>Jina</strong> ("Conqueror") — one who conquers inner passions like anger, greed, and pride. His followers became known as <em>Jains</em>.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">👤</span><h2 class="section-title">Key Figures</h2></div>
+      <div class="figures-row">
+        <div class="figure-card fc-jain"><div class="figure-emoji">🌟</div><div class="figure-name fn-jain">Mahavira</div><div class="figure-role">24th Tirthankara (~599–527 BCE)</div><div class="figure-desc">Revived and organized Jainism. After 12 years of intense meditation, he achieved perfect knowledge and taught the path to liberation for all beings.</div></div>
+        <div class="figure-card fc-jain"><div class="figure-emoji">🏔️</div><div class="figure-name fn-jain">Rishabhanatha</div><div class="figure-role">1st Tirthankara</div><div class="figure-desc">Considered the first Tirthankara of the current cosmic cycle — Jains believe he lived millions of years ago and was the first to teach Jain principles.</div></div>
+        <div class="figure-card fc-jain"><div class="figure-emoji">📖</div><div class="figure-name fn-jain">The 24 Tirthankaras</div><div class="figure-role">Enlightened Teachers</div><div class="figure-desc">"Ford-makers" — 24 enlightened beings who appear in each cosmic cycle to guide souls toward liberation. Revered but not worshipped as gods.</div></div>
+        <div class="figure-card fc-jain"><div class="figure-emoji">🕊️</div><div class="figure-name fn-jain">Parshvanatha</div><div class="figure-role">23rd Tirthankara (~900 BCE)</div><div class="figure-desc">The Tirthankara before Mahavira, whose teachings Mahavira built upon — evidence that Jainism predates the 6th century BCE.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">💡</span><h2 class="section-title">Core Beliefs (The "B" of Belief)</h2></div>
+      <div class="belief-list">
+        <div class="belief-item bi-jain"><span class="belief-num bn-jain">1</span><div class="belief-text"><strong>Ahimsa — Nonviolence Above All:</strong> Every living being — from humans to animals to tiny insects — has a soul and deserves to live without harm. Jains try to avoid hurting any creature, even accidentally. Most Jains are strict vegetarians.</div></div>
+        <div class="belief-item bi-jain"><span class="belief-num bn-jain">2</span><div class="belief-text"><strong>No Creator God:</strong> Jainism does not believe in a God who created the universe. Instead, Jains honor the <em>Tirthankaras</em> — fully enlightened beings — as the highest examples of what the soul can achieve.</div></div>
+        <div class="belief-item bi-jain"><span class="belief-num bn-jain">3</span><div class="belief-text"><strong>Karma as a Physical Force:</strong> In Jainism, karma is an actual invisible substance that sticks to the soul because of actions and thoughts. It keeps the soul trapped in the cycle of rebirth. Liberation means completely shedding all karma.</div></div>
+        <div class="belief-item bi-jain"><span class="belief-num bn-jain">4</span><div class="belief-text"><strong>Anekantavada — Many Perspectives:</strong> No single viewpoint can capture the whole truth. This principle encourages humility and openness — making Jains historically very tolerant of other religions and beliefs.</div></div>
+        <div class="belief-item bi-jain"><span class="belief-num bn-jain">5</span><div class="belief-text"><strong>Liberation Through Self-Discipline:</strong> Through rigorous discipline, meditation, and detachment from worldly pleasures, the soul sheds all karma and achieves <em>Moksha</em> — perfect peace and freedom from rebirth forever.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">🧘</span><h2 class="section-title">Practices (The "B" of Behavior)</h2></div>
+      <div class="practices-grid">
+        <div class="practice-card pc-jain"><div class="practice-icon">🥗</div><div class="practice-name pn-jain">Strict Vegetarianism</div><div class="practice-desc">Jains avoid all meat, fish, and eggs. Many also avoid root vegetables like onions, since pulling them harms micro-organisms in the soil.</div></div>
+        <div class="practice-card pc-jain"><div class="practice-icon">🙏</div><div class="practice-name pn-jain">Samayika (Meditation)</div><div class="practice-desc">A daily 48-minute period of complete stillness and reflection. During this time, a Jain meditates with total detachment from all worldly concerns.</div></div>
+        <div class="practice-card pc-jain"><div class="practice-icon">🌗</div><div class="practice-name pn-jain">Paryushana Fasting</div><div class="practice-desc">An 8–10 day annual festival of fasting and seeking forgiveness from everyone one may have hurt — concluding with "Micchami Dukkadam" (universal forgiveness).</div></div>
+        <div class="practice-card pc-jain"><div class="practice-icon">🤲</div><div class="practice-name pn-jain">Charity (Daan)</div><div class="practice-desc">Giving to monks, nuns, and the poor. Jains are known for running hospitals, animal shelters, and schools throughout India.</div></div>
+        <div class="practice-card pc-jain"><div class="practice-icon">🪔</div><div class="practice-name pn-jain">Temple Worship</div><div class="practice-desc">Jains visit temples to honor the Tirthankaras through rituals with flowers and incense — a reminder of the soul's potential for perfect liberation.</div></div>
+        <div class="practice-card pc-jain"><div class="practice-icon">🧘</div><div class="practice-name pn-jain">Monastic Life</div><div class="practice-desc">Some Jains become monks or nuns, taking vows of nonviolence, non-attachment, and strict austerity as the most direct path to liberation.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">🤝</span><h2 class="section-title">Community & Belonging (The "B" of Belonging)</h2></div>
+      <div class="belonging-body">
+        <div class="belong-item belong-jain"><div class="belong-title bt-jain">🏛️ The Derasar (Temple)</div><div class="belong-desc">Jain temples are gathering places for worship and festivals. Some of the most beautiful temples in the world — like Dilwara in Rajasthan — are Jain.</div></div>
+        <div class="belong-item belong-jain"><div class="belong-title bt-jain">🫂 The Four-Fold Community</div><div class="belong-desc">Jain society includes monks, nuns, laymen, and laywomen — all equally important and all supporting each other on the path to liberation.</div></div>
+        <div class="belong-item belong-jain"><div class="belong-title bt-jain">🌗 Paryushana Festival</div><div class="belong-desc">This annual festival of fasting and forgiveness brings the community together. "Micchami Dukkadam" means "If I have hurt you in any way, I ask your forgiveness."</div></div>
+        <div class="belong-item belong-jain"><div class="belong-title bt-jain">🏥 Social Service</div><div class="belong-desc">Jains run hospitals, animal clinics, schools, and charities. Community service is considered a spiritual practice that strengthens bonds within the community.</div></div>
+        <div class="belong-item belong-jain"><div class="belong-title bt-jain">🌱 Shared Values</div><div class="belong-desc">Nonviolence shapes what Jains eat, what careers they choose, and how they treat every living thing — creating a powerful shared identity wherever they live.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-jain"><span class="section-icon">📚</span><h2 class="section-title">Key Vocabulary</h2></div>
+      <div class="vocab-grid">
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Ahimsa</div><div class="vocab-def">Nonviolence — the most important Jain principle; avoiding harm to all living beings</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Tirthankara</div><div class="vocab-def">A "ford-maker" — one of 24 enlightened teachers who guide souls toward liberation</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Mahavira</div><div class="vocab-def">The 24th Tirthankara and organizer of modern Jainism; his name means "Great Hero"</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Karma</div><div class="vocab-def">In Jainism, an invisible substance that sticks to the soul based on actions and thoughts</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Moksha</div><div class="vocab-def">Spiritual liberation — when all karma is shed and the soul is freed from the cycle of rebirth</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Anekantavada</div><div class="vocab-def">"Many-sidedness" — the belief that truth has many aspects and no single viewpoint is complete</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Samayika</div><div class="vocab-def">A 48-minute daily practice of meditation and stillness performed by devout Jains</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Derasar</div><div class="vocab-def">A Jain temple or place of worship</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Jina</div><div class="vocab-def">"Conqueror" — one who has conquered inner passions; the source of the word "Jain"</div></div>
+        <div class="vocab-card vc-jain"><div class="vocab-term vt-jain">Agamas</div><div class="vocab-def">The sacred scriptures of Jainism, containing Mahavira's teachings as recorded by followers</div></div>
+      </div>
+    </div>
+    <div class="dyk-box dyk-jain"><span class="dyk-icon">💡</span><div class="dyk-text"><strong>Did You Know?</strong>Jain monks of the Digambara sect take the vow of non-attachment so seriously that they wear no clothing at all. They also use a small brush made of shed peacock feathers to gently sweep the ground before sitting or walking — so they don't accidentally harm any insects.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ SHINTO ══════════════════ -->
+<div class="packet" id="packet-shinto">
+  <div class="packet-hero hero-shinto"><span class="hero-symbol">⛩️</span><h1>Shinto</h1><p class="hero-tagline">"The divine is present in nature, in ancestors, and in all of Japan."</p><div class="hero-accent-bar bar-shinto"></div></div>
+  <div class="quick-facts">
+    <div class="fact-item"><div class="fact-label">Founded</div><div class="fact-value val-shinto">Ancient (no set date)</div></div>
+    <div class="fact-item"><div class="fact-label">Origin</div><div class="fact-value val-shinto">Japan</div></div>
+    <div class="fact-item"><div class="fact-label">Followers</div><div class="fact-value val-shinto">~3–4 Million (active)</div></div>
+    <div class="fact-item"><div class="fact-label">Sacred Texts</div><div class="fact-value val-shinto">Kojiki, Nihon Shoki</div></div>
+    <div class="fact-item"><div class="fact-label">House of Worship</div><div class="fact-value val-shinto">Jinja (Shrine)</div></div>
+  </div>
+  <div class="content-area">
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">🗺️</span><h2 class="section-title">Historical Origin & Geography</h2></div>
+      <div class="origin-visual"><div class="origin-map"><div class="map-pin-area mpa-shinto">🗾</div><div class="map-info mi-shinto"><h3>The Japanese Archipelago</h3><p>Shinto is the <strong>indigenous religion of Japan</strong> — it developed naturally among the people of the Japanese islands thousands of years ago, completely unique to <strong>Japan</strong> and deeply tied to Japanese culture and identity.</p></div></div></div>
+      <div class="section-body" style="padding-top:0"><p>Shinto has <strong>no single founder</strong> and <strong>no specific date of origin</strong>. It grew from the ancient Japanese belief that the natural world is filled with powerful divine spirits called <em>kami</em>. The word "Shinto" — meaning "way of the kami" — wasn't even used until Buddhism arrived in Japan in the 6th century CE, when the Japanese needed a name for their existing native beliefs.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">✨</span><h2 class="section-title">The Origin Story (Creation Myth)</h2></div>
+      <div class="section-body"><p>According to the <em>Kojiki</em> (712 CE), in the beginning, heaven and earth were not yet separated — the universe was shapeless chaos. Lighter elements rose to form heaven; heavier ones sank to form earth. The first kami (divine beings) appeared in the heavens.</p><p>Two kami were given a special task: <strong>Izanagi</strong> (the male) and <strong>Izanami</strong> (the female) were ordered to create the land. They stirred the ocean with a heavenly spear, and when they pulled it out, the drops that fell created the islands of Japan.</p><p>Izanagi and Izanami then gave birth to countless kami — including <strong>Amaterasu</strong>, the sun goddess, who became the most important kami in Shinto. Japan's imperial family claims descent from Amaterasu, giving emperors both political and religious authority for centuries.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">👤</span><h2 class="section-title">Key Figures & Divine Beings</h2></div>
+      <div class="figures-row">
+        <div class="figure-card fc-shinto"><div class="figure-emoji">☀️</div><div class="figure-name fn-shinto">Amaterasu</div><div class="figure-role">Sun Goddess</div><div class="figure-desc">The most important kami in Shinto. Goddess of the sun and the universe, enshrined at the Grand Shrine of Ise. Japan's imperial family claims descent from her.</div></div>
+        <div class="figure-card fc-shinto"><div class="figure-emoji">🌊</div><div class="figure-name fn-shinto">Izanagi & Izanami</div><div class="figure-role">Creator Deities</div><div class="figure-desc">The divine couple who created the Japanese islands and gave birth to many other kami. Their story forms the core of the Shinto creation myth.</div></div>
+        <div class="figure-card fc-shinto"><div class="figure-emoji">⛈️</div><div class="figure-name fn-shinto">Susanoo</div><div class="figure-role">Storm God</div><div class="figure-desc">God of storms and the sea, brother of Amaterasu — sometimes troublesome, other times heroic. Famous for slaying the eight-headed serpent Yamata no Orochi.</div></div>
+        <div class="figure-card fc-shinto"><div class="figure-emoji">🌾</div><div class="figure-name fn-shinto">Inari</div><div class="figure-role">Kami of Rice & Foxes</div><div class="figure-desc">One of the most widely worshipped kami, associated with rice, agriculture, and prosperity. Inari shrines (marked by fox statues) are the most numerous in all of Japan.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">💡</span><h2 class="section-title">Core Beliefs (The "B" of Belief)</h2></div>
+      <div class="belief-list">
+        <div class="belief-item bi-shinto"><span class="belief-num bn-shinto">1</span><div class="belief-text"><strong>Kami Are Everywhere:</strong> There are countless <em>kami</em> inhabiting the natural world — in mountains, rivers, trees, animals, and special objects. They can be major deities like Amaterasu, or as humble as the spirit of a beloved ancestor.</div></div>
+        <div class="belief-item bi-shinto"><span class="belief-num bn-shinto">2</span><div class="belief-text"><strong>Nature is Sacred:</strong> The natural world is not just beautiful — it is holy. Shinto teaches that humans should live in <em>harmony with nature</em>, not dominate it. Many natural sites — like Mount Fuji — are considered sacred places of the kami.</div></div>
+        <div class="belief-item bi-shinto"><span class="belief-num bn-shinto">3</span><div class="belief-text"><strong>Purity and Pollution (Kegare):</strong> Shinto places great importance on <em>purity</em>. Certain things create spiritual pollution called <em>kegare</em>. Purification rituals (<em>harae</em>) cleanse this pollution and restore harmony between humans and kami.</div></div>
+        <div class="belief-item bi-shinto"><span class="belief-num bn-shinto">4</span><div class="belief-text"><strong>Humans Are Inherently Good:</strong> Unlike some religions that teach people are born sinful, Shinto teaches that humans are born pure and fundamentally good. Evil comes from outside forces — impurities or neglect of the kami.</div></div>
+        <div class="belief-item bi-shinto"><span class="belief-num bn-shinto">5</span><div class="belief-text"><strong>Focus on This Life:</strong> Shinto has little theology about heaven or afterlife. It focuses on living well, maintaining harmony with the kami, honoring ancestors, and ensuring health and prosperity in <em>this</em> life.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">🌸</span><h2 class="section-title">Practices (The "B" of Behavior)</h2></div>
+      <div class="practices-grid">
+        <div class="practice-card pc-shinto"><div class="practice-icon">💧</div><div class="practice-name pn-shinto">Misogi (Purification)</div><div class="practice-desc">Ritual washing of hands and mouth at a shrine's water basin before approaching the kami — cleansing body and soul before entering sacred space.</div></div>
+        <div class="practice-card pc-shinto"><div class="practice-icon">🏯</div><div class="practice-name pn-shinto">Shrine Visits</div><div class="practice-desc">Visiting a jinja to pray and communicate with the kami. Japan has over 80,000 shrines. Worshippers bow twice, clap twice, bow once, and pray silently.</div></div>
+        <div class="practice-card pc-shinto"><div class="practice-icon">🏮</div><div class="practice-name pn-shinto">Matsuri (Festivals)</div><div class="practice-desc">Local festivals honoring specific kami, with processions, traditional music, and carrying a portable shrine (mikoshi) through the streets.</div></div>
+        <div class="practice-card pc-shinto"><div class="practice-icon">📜</div><div class="practice-name pn-shinto">Omamori (Charms)</div><div class="practice-desc">Protective charms from shrines carrying the kami's blessing — for safety, exam success, or protection from illness.</div></div>
+        <div class="practice-card pc-shinto"><div class="practice-icon">🏹</div><div class="practice-name pn-shinto">Harae (Purification Rites)</div><div class="practice-desc">Ceremonies by Shinto priests using a wand of white paper strips waved over people or objects to cleanse spiritual impurities.</div></div>
+        <div class="practice-card pc-shinto"><div class="practice-icon">🌸</div><div class="practice-name pn-shinto">Ancestor Veneration</div><div class="practice-desc">Honoring deceased family members at home shrines with offerings of food and prayer. Ancestors are believed to watch over and protect their living descendants.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">🤝</span><h2 class="section-title">Community & Belonging (The "B" of Belonging)</h2></div>
+      <div class="belonging-body">
+        <div class="belong-item belong-shinto"><div class="belong-title bt-shinto">⛩️ The Ujiko System</div><div class="belong-desc">Every village traditionally had a local shrine, and the people of that area — called <em>ujiko</em> — belonged to that shrine's community. A deeply local sense of belonging tied to place and land.</div></div>
+        <div class="belong-item belong-shinto"><div class="belong-title bt-shinto">🏮 Matsuri & Community</div><div class="belong-desc">Local festivals are major community events organized by shrine parishioners. The shared work of preparing and celebrating matsuri creates strong bonds between neighbors.</div></div>
+        <div class="belong-item belong-shinto"><div class="belong-title bt-shinto">🎎 Life Rituals</div><div class="belong-desc">Shinto marks major life events: babies blessed at shrines, couples married in shrine ceremonies, New Year welcomed at shrines — tying individuals to community and tradition.</div></div>
+        <div class="belong-item belong-shinto"><div class="belong-title bt-shinto">🇯🇵 National Identity</div><div class="belong-desc">Shinto is uniquely Japanese. Practicing Shinto connects people to the long history of Japan — its mythology, its imperial family, and its deep relationship with the land.</div></div>
+        <div class="belong-item belong-shinto"><div class="belong-title bt-shinto">🏡 The Kamidana</div><div class="belong-desc">Many Japanese homes have a small household shrine (kamidana) for daily offerings to the kami and ancestors — extending spiritual belonging into the family home itself.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-shinto"><span class="section-icon">📚</span><h2 class="section-title">Key Vocabulary</h2></div>
+      <div class="vocab-grid">
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Kami</div><div class="vocab-def">Divine spirits or gods in Shinto, present in natural phenomena, places, ancestors, and special objects</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Jinja</div><div class="vocab-def">A Shinto shrine — the sacred space where kami reside and are worshipped</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Torii</div><div class="vocab-def">The iconic red gateway marking the entrance to a Shinto shrine, separating the sacred from the ordinary world</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Matsuri</div><div class="vocab-def">A Shinto festival honoring specific kami, often with processions, music, and community celebration</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Kegare</div><div class="vocab-def">Spiritual pollution or impurity that disrupts harmony with the kami; removed through purification rituals</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Harae</div><div class="vocab-def">Purification rituals used to cleanse spiritual pollution and restore harmony with the kami</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Kojiki</div><div class="vocab-def">The oldest written record of Japanese mythology (712 CE), recording Shinto creation stories</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Kamidana</div><div class="vocab-def">A small household altar or "god shelf" found in many Japanese homes for daily worship</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Amaterasu</div><div class="vocab-def">The sun goddess and most important kami; said to be the ancestor of Japan's imperial family</div></div>
+        <div class="vocab-card vc-shinto"><div class="vocab-term vt-shinto">Omamori</div><div class="vocab-def">Protective charms purchased at shrines that carry the blessing of the local kami</div></div>
+      </div>
+    </div>
+    <div class="dyk-box dyk-shinto"><span class="dyk-icon">💡</span><div class="dyk-text"><strong>Did You Know?</strong>Japan's most sacred Shinto shrine — the Grand Shrine of Ise — has been rebuilt on an adjacent site <em>every 20 years</em> for over 1,300 years. This ritual represents renewal and the passing of sacred craftsmanship from generation to generation. The next rebuilding will happen in 2033!</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ BAHÁ'Í ══════════════════ -->
+<div class="packet" id="packet-bahai">
+  <div class="packet-hero hero-bahai"><span class="hero-symbol">✦</span><h1>The Bahá'í Faith</h1><p class="hero-tagline">"The earth is but one country, and mankind its citizens."</p><div class="hero-accent-bar bar-bahai"></div></div>
+  <div class="quick-facts">
+    <div class="fact-item"><div class="fact-label">Founded</div><div class="fact-value val-bahai">1844 CE</div></div>
+    <div class="fact-item"><div class="fact-label">Origin</div><div class="fact-value val-bahai">Persia (Iran)</div></div>
+    <div class="fact-item"><div class="fact-label">Followers</div><div class="fact-value val-bahai">~5–8 Million</div></div>
+    <div class="fact-item"><div class="fact-label">Holy Writings</div><div class="fact-value val-bahai">Writings of Bahá'u'lláh</div></div>
+    <div class="fact-item"><div class="fact-label">House of Worship</div><div class="fact-value val-bahai">Bahá'í House of Worship</div></div>
+  </div>
+  <div class="content-area">
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">🗺️</span><h2 class="section-title">Historical Origin & Geography</h2></div>
+      <div class="origin-visual"><div class="origin-map"><div class="map-pin-area mpa-bahai">🕌</div><div class="map-info mi-bahai"><h3>Persia (Modern-Day Iran)</h3><p>The Bahá'í Faith began in <strong>Persia</strong> (now Iran) in the mid-19th century. Its founders were imprisoned and exiled, spreading the faith from Persia to <strong>Baghdad, Istanbul, Akka (Israel)</strong>, and eventually the entire world.</p></div></div></div>
+      <div class="section-body" style="padding-top:0"><p>In the 1840s, a young man known as <strong>the Báb</strong> announced he was a messenger from God — and that a greater messenger was soon to come. Muslim authorities saw this as deeply controversial. The Báb and thousands of followers were persecuted and killed. But the movement survived and transformed into the Bahá'í Faith under <strong>Bahá'u'lláh</strong> — today one of the most geographically widespread religions on earth.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">✨</span><h2 class="section-title">The Origin Story</h2></div>
+      <div class="section-body"><p>On the night of <strong>May 22, 1844</strong>, in Shiraz, Persia, a 25-year-old merchant declared himself the Báb — "the Gate" — a messenger of God announcing a new age and a greater teacher yet to come. This date marks the beginning of the Bahá'í calendar.</p><p>The Báb was executed by firing squad in 1850. But the movement lived on. A Persian nobleman, <strong>Mírzá Husayn-'Alí</strong>, experienced a divine vision while imprisoned in Tehran in 1852. He later took the name <strong>Bahá'u'lláh</strong> — "Glory of God."</p><p>Bahá'u'lláh spent his life in exile — mostly in Akka, in present-day Israel — writing thousands of letters and books that became the foundation of the Bahá'í Faith. He died in 1892, but his writings guide a global community to this day.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">👤</span><h2 class="section-title">Key Figures</h2></div>
+      <div class="figures-row">
+        <div class="figure-card fc-bahai"><div class="figure-emoji">🌟</div><div class="figure-name fn-bahai">The Báb</div><div class="figure-role">Prophet-Herald (1819–1850)</div><div class="figure-desc">Announced a new revelation in 1844 and foretold the coming of Bahá'u'lláh. Executed at age 30, his teachings ignited a global movement.</div></div>
+        <div class="figure-card fc-bahai"><div class="figure-emoji">✦</div><div class="figure-name fn-bahai">Bahá'u'lláh</div><div class="figure-role">Founder (1817–1892)</div><div class="figure-desc">The central figure of the Bahá'í Faith. Claimed to be God's messenger for this age and wrote extensively about the unity of humanity and the need for global justice.</div></div>
+        <div class="figure-card fc-bahai"><div class="figure-emoji">🕊️</div><div class="figure-name fn-bahai">'Abdu'l-Bahá</div><div class="figure-role">Son & Interpreter (1844–1921)</div><div class="figure-desc">Bahá'u'lláh's son and appointed interpreter of his writings. Traveled to Europe and America to spread the faith and lived as a living example of Bahá'í principles.</div></div>
+        <div class="figure-card fc-bahai"><div class="figure-emoji">📖</div><div class="figure-name fn-bahai">Shoghi Effendi</div><div class="figure-role">Guardian (1897–1957)</div><div class="figure-desc">'Abdu'l-Bahá's grandson, who led the global Bahá'í community for 36 years and translated Bahá'u'lláh's writings into English.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">💡</span><h2 class="section-title">Core Beliefs (The "B" of Belief)</h2></div>
+      <div class="belief-list">
+        <div class="belief-item bi-bahai"><span class="belief-num bn-bahai">1</span><div class="belief-text"><strong>One God, One Religion:</strong> Bahá'ís believe one God has sent many messengers — Abraham, Moses, Jesus, Muhammad, Buddha, Krishna, and Bahá'u'lláh — each bringing teachings for their time. All are part of one continuous, unfolding religion of God.</div></div>
+        <div class="belief-item bi-bahai"><span class="belief-num bn-bahai">2</span><div class="belief-text"><strong>Unity of All Humanity:</strong> All human beings belong to one single race and one global family. Racism, nationalism, and prejudice are the most dangerous threats to human progress. "The earth is but one country, and mankind its citizens."</div></div>
+        <div class="belief-item bi-bahai"><span class="belief-num bn-bahai">3</span><div class="belief-text"><strong>Equality of Men and Women:</strong> Bahá'u'lláh declared men and women completely equal — a radical idea in 19th-century Persia. Civilization can only advance through the full and equal participation of women in all areas of society.</div></div>
+        <div class="belief-item bi-bahai"><span class="belief-num bn-bahai">4</span><div class="belief-text"><strong>Science and Religion Work Together:</strong> Religion and science are two wings of the same bird — both searching for truth. Any religious belief that contradicts established science should be reconsidered. God is the author of both the physical and the spiritual world.</div></div>
+        <div class="belief-item bi-bahai"><span class="belief-num bn-bahai">5</span><div class="belief-text"><strong>World Peace and Global Unity:</strong> Bahá'ís believe humanity is destined to achieve world peace — and that building a just, unified world civilization is humanity's greatest task in this age.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">🕊️</span><h2 class="section-title">Practices (The "B" of Behavior)</h2></div>
+      <div class="practices-grid">
+        <div class="practice-card pc-bahai"><div class="practice-icon">🙏</div><div class="practice-name pn-bahai">Daily Prayer</div><div class="practice-desc">Bahá'ís say one of three obligatory prayers each day. Prayer is a direct conversation with God — personal and sincere, with no priest or intermediary needed.</div></div>
+        <div class="practice-card pc-bahai"><div class="practice-icon">📖</div><div class="practice-name pn-bahai">Daily Reading</div><div class="practice-desc">Bahá'ís are encouraged to read from Bahá'u'lláh's writings every morning and evening to nourish their spiritual life and stay connected to God's guidance.</div></div>
+        <div class="practice-card pc-bahai"><div class="practice-icon">🌙</div><div class="practice-name pn-bahai">Fasting (March)</div><div class="practice-desc">Each March, Bahá'ís fast from sunrise to sunset for 19 days — a time of spiritual reflection, detachment from material habits, and deepened connection to God.</div></div>
+        <div class="practice-card pc-bahai"><div class="practice-icon">🏛️</div><div class="practice-name pn-bahai">Devotional Gatherings</div><div class="practice-desc">Open to everyone, regardless of faith — prayers and writings from many world religions are read and sung together. Anyone from the community is welcome.</div></div>
+        <div class="practice-card pc-bahai"><div class="practice-icon">🌍</div><div class="practice-name pn-bahai">Community Building</div><div class="practice-desc">Bahá'ís run children's classes, youth groups, and study circles open to all — part of a systematic effort to build communities based on unity and justice.</div></div>
+        <div class="practice-card pc-bahai"><div class="practice-icon">🗳️</div><div class="practice-name pn-bahai">No Clergy</div><div class="practice-desc">The Bahá'í Faith has no priests. Communities are governed by democratically elected nine-member councils called "Local Spiritual Assemblies."</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">🤝</span><h2 class="section-title">Community & Belonging (The "B" of Belonging)</h2></div>
+      <div class="belonging-body">
+        <div class="belong-item belong-bahai"><div class="belong-title bt-bahai">🏛️ Houses of Worship</div><div class="belong-desc">Ten Bahá'í Houses of Worship around the world — each a stunning 9-sided domed building open to all people of all faiths for prayer and meditation.</div></div>
+        <div class="belong-item belong-bahai"><div class="belong-title bt-bahai">🌍 A Truly Global Faith</div><div class="belong-desc">With followers in nearly every country, Bahá'ís feel connected to a worldwide family that transcends nationality. Meeting a fellow Bahá'í anywhere creates an immediate bond of shared values.</div></div>
+        <div class="belong-item belong-bahai"><div class="belong-title bt-bahai">📅 The 19-Day Feast</div><div class="belong-desc">Every 19 days, communities gather combining prayer, community consultation, and social time. This regular rhythm builds strong, consistent bonds among members.</div></div>
+        <div class="belong-item belong-bahai"><div class="belong-title bt-bahai">🗳️ Democratic Governance</div><div class="belong-desc">Communities elect their own governing councils through a unique process with no campaigning. This creates a strong sense of shared ownership and belonging.</div></div>
+        <div class="belong-item belong-bahai"><div class="belong-title bt-bahai">🧒 Children & Youth</div><div class="belong-desc">Bahá'í children's classes and youth programs are open to all neighborhood children regardless of religion — creating intentionally diverse, inclusive communities.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-bahai"><span class="section-icon">📚</span><h2 class="section-title">Key Vocabulary</h2></div>
+      <div class="vocab-grid">
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Bahá'u'lláh</div><div class="vocab-def">The founder of the Bahá'í Faith; his name means "Glory of God" in Arabic</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">The Báb</div><div class="vocab-def">The forerunner and herald of Bahá'u'lláh; his name means "the Gate" in Arabic</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Progressive Revelation</div><div class="vocab-def">The teaching that God sends messengers (Moses, Jesus, Muhammad, Bahá'u'lláh) in different eras to guide humanity forward</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Unity of Humanity</div><div class="vocab-def">The central Bahá'í principle that all people belong to one human family and all prejudice must be eliminated</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Manifestation of God</div><div class="vocab-def">Bahá'í term for the great religious founders (Moses, Jesus, Muhammad, etc.) who reveal God's will to humanity</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">19-Day Feast</div><div class="vocab-def">A community gathering held every 19 days combining worship, consultation, and fellowship</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">House of Worship</div><div class="vocab-def">A 9-sided Bahá'í temple open to all people of all faiths for prayer and meditation</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Spiritual Assembly</div><div class="vocab-def">A democratically elected 9-member council that administers a local Bahá'í community</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Kitáb-i-Aqdas</div><div class="vocab-def">The Most Holy Book of the Bahá'í Faith, written by Bahá'u'lláh, containing its laws and principles</div></div>
+        <div class="vocab-card vc-bahai"><div class="vocab-term vt-bahai">Naw-Rúz</div><div class="vocab-def">The Bahá'í New Year, celebrated on the spring equinox (around March 21)</div></div>
+      </div>
+    </div>
+    <div class="dyk-box dyk-bahai"><span class="dyk-icon">💡</span><div class="dyk-text"><strong>Did You Know?</strong>The Bahá'í Faith is one of the fastest-growing religions in the world, with followers in <em>over 190 countries</em>. Despite this, Bahá'ís in Iran (where the faith began) are still persecuted today and denied the right to attend university simply because of their religion.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ ZOROASTRIANISM ══════════════════ -->
+<div class="packet" id="packet-zoro">
+  <div class="packet-hero hero-zoro"><span class="hero-symbol">🔥</span><h1>Zoroastrianism</h1><p class="hero-tagline">"Good Thoughts, Good Words, Good Deeds."</p><div class="hero-accent-bar bar-zoro"></div></div>
+  <div class="quick-facts">
+    <div class="fact-item"><div class="fact-label">Founded</div><div class="fact-value val-zoro">~1500–600 BCE</div></div>
+    <div class="fact-item"><div class="fact-label">Origin</div><div class="fact-value val-zoro">Ancient Persia (Iran)</div></div>
+    <div class="fact-item"><div class="fact-label">Followers</div><div class="fact-value val-zoro">~100,000–200,000</div></div>
+    <div class="fact-item"><div class="fact-label">Holy Text</div><div class="fact-value val-zoro">Avesta</div></div>
+    <div class="fact-item"><div class="fact-label">House of Worship</div><div class="fact-value val-zoro">Fire Temple</div></div>
+  </div>
+  <div class="content-area">
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">🗺️</span><h2 class="section-title">Historical Origin & Geography</h2></div>
+      <div class="origin-visual"><div class="origin-map"><div class="map-pin-area mpa-zoro">🏜️</div><div class="map-info mi-zoro"><h3>Ancient Persia (Modern-Day Iran)</h3><p>Zoroastrianism originated in <strong>ancient Persia</strong> — the vast empire stretching across what is now <strong>Iran, Central Asia, and parts of Afghanistan</strong>. It was once the official religion of the most powerful empire in the world.</p></div></div></div>
+      <div class="section-body" style="padding-top:0"><p>Zoroastrianism is one of the <strong>oldest religions still practiced today</strong> — and one of the most historically important. For over a thousand years it was the dominant religion of the Persian Empire. Its ideas about <strong>one God, angels, a devil, heaven and hell, resurrection, and a final judgment deeply influenced Judaism, Christianity, and Islam</strong> — the three religions you already studied in this class.</p><p>Today, Zoroastrians are a small community. Most live in <strong>India</strong> (where they are called <em>Parsis</em>, meaning "Persians") and in <strong>Iran</strong>, with growing communities in the United States, Canada, and the UK. Though their numbers are small, their influence on world history is enormous.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">✨</span><h2 class="section-title">The Origin Story</h2></div>
+      <div class="section-body"><p>The religion was founded by a prophet named <strong>Zarathustra</strong> — called <em>Zoroaster</em> in Greek, which is how the religion got its English name. Scholars debate when he lived, with estimates ranging from <strong>1500 BCE to 600 BCE</strong>. He most likely lived somewhere in the ancient steppes of Central Asia or Persia.</p><p>According to Zoroastrian tradition, Zarathustra had a powerful vision at age 30. While drawing water from a river, he saw a shining being of light who led him into the presence of <strong>Ahura Mazda</strong> ("the Wise Lord"), the one supreme God. Zarathustra was shown the true nature of the universe: a cosmic struggle between <em>Asha</em> (truth and righteousness) and <em>Druj</em> (lies and evil). Every human being must choose a side.</p><p>Zarathustra faced years of opposition from people who worshipped many gods. Eventually he won over a local king named <strong>Vishtaspa</strong>, and the religion began to spread. Centuries later, it became the official religion of the <strong>Achaemenid Persian Empire</strong> — the largest empire the ancient world had ever seen, stretching from Egypt to India.</p></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">👤</span><h2 class="section-title">Key Figures</h2></div>
+      <div class="figures-row">
+        <div class="figure-card fc-zoro"><div class="figure-emoji">🌟</div><div class="figure-name fn-zoro">Zarathustra (Zoroaster)</div><div class="figure-role">The Prophet & Founder</div><div class="figure-desc">After a divine vision of Ahura Mazda, he dedicated his life to teaching that there is one supreme God and that humans must choose between truth and lies in every action they take.</div></div>
+        <div class="figure-card fc-zoro"><div class="figure-emoji">☀️</div><div class="figure-name fn-zoro">Ahura Mazda</div><div class="figure-role">The Supreme God</div><div class="figure-desc">"The Wise Lord" — the one supreme, all-knowing, all-good God who created everything that is true and beautiful. Fire and light are his symbols.</div></div>
+        <div class="figure-card fc-zoro"><div class="figure-emoji">👑</div><div class="figure-name fn-zoro">Cyrus the Great</div><div class="figure-role">Persian Emperor (590–530 BCE)</div><div class="figure-desc">The Zoroastrian founder of the Achaemenid Persian Empire. Famous for conquering Babylon and freeing the Jewish people from captivity — an act recorded in the Hebrew Bible.</div></div>
+        <div class="figure-card fc-zoro"><div class="figure-emoji">😈</div><div class="figure-name fn-zoro">Angra Mainyu</div><div class="figure-role">The Destructive Spirit</div><div class="figure-desc">The evil spirit who opposes Ahura Mazda — the source of all lies, suffering, and wrongdoing in the world. Zoroastrians believe good will ultimately defeat him at the end of time.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">💡</span><h2 class="section-title">Core Beliefs (The "B" of Belief)</h2></div>
+      <div class="belief-list">
+        <div class="belief-item bi-zoro"><span class="belief-num bn-zoro">1</span><div class="belief-text"><strong>One Supreme God — Ahura Mazda:</strong> Zoroastrianism was one of the <em>first</em> religions in history to teach that there is only one supreme God. Ahura Mazda is all-knowing, all-good, and the creator of everything righteous. Evil has a separate source — the destructive spirit Angra Mainyu.</div></div>
+        <div class="belief-item bi-zoro"><span class="belief-num bn-zoro">2</span><div class="belief-text"><strong>The Cosmic Battle Between Good and Evil:</strong> The universe is the scene of a great struggle between <em>Asha</em> (truth, righteousness, and order) and <em>Druj</em> (lies, evil, and chaos). Every human being must choose which side to support through their thoughts, words, and actions.</div></div>
+        <div class="belief-item bi-zoro"><span class="belief-num bn-zoro">3</span><div class="belief-text"><strong>Free Will and Moral Responsibility:</strong> Zoroastrianism strongly emphasizes <em>free will</em>. Every person freely chooses between good and evil in every moment. God does not force anyone — the choice, and the responsibility, belong entirely to you.</div></div>
+        <div class="belief-item bi-zoro"><span class="belief-num bn-zoro">4</span><div class="belief-text"><strong>Heaven, Hell, and Final Judgment:</strong> After death, every soul crosses the <em>Chinvat Bridge</em> (Bridge of Judgment). Those who chose righteousness cross safely to paradise with Ahura Mazda. Those who chose evil fall into darkness. At the end of time, evil will be destroyed and all souls purified.</div></div>
+        <div class="belief-item bi-zoro"><span class="belief-num bn-zoro">5</span><div class="belief-text"><strong>Fire and Light as Sacred Symbols:</strong> Fire represents the light of Ahura Mazda, truth, and purity. Sacred fires burn continuously in Zoroastrian fire temples and have done so for thousands of years. Some fires in India are believed to have burned without interruption for over 1,000 years.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">🔥</span><h2 class="section-title">Practices (The "B" of Behavior)</h2></div>
+      <div class="practices-grid">
+        <div class="practice-card pc-zoro"><div class="practice-icon">🔥</div><div class="practice-name pn-zoro">Fire Temple Worship</div><div class="practice-desc">Zoroastrians worship at fire temples where a sacred flame burns continuously. Worshippers pray facing the fire as a symbol of God's light and truth — they do not worship the fire itself.</div></div>
+        <div class="practice-card pc-zoro"><div class="practice-icon">🧣</div><div class="practice-name pn-zoro">Sudreh & Kusti</div><div class="practice-desc">After a coming-of-age ceremony (Navjote), Zoroastrians wear a sacred white inner garment (sudreh) and a sacred cord (kusti) tied around the waist as symbols of faith and commitment.</div></div>
+        <div class="practice-card pc-zoro"><div class="practice-icon">🙏</div><div class="practice-name pn-zoro">Prayers (Gahs)</div><div class="practice-desc">Devout Zoroastrians pray five times a day — once for each division of the day. Prayers are recited in Avestan, the ancient language of the scriptures, facing a source of light.</div></div>
+        <div class="practice-card pc-zoro"><div class="practice-icon">🌿</div><div class="practice-name pn-zoro">Respect for Nature</div><div class="practice-desc">Zoroastrians are taught to protect earth, water, fire, and air — the four sacred elements Ahura Mazda created. Polluting these elements is considered spiritually wrong.</div></div>
+        <div class="practice-card pc-zoro"><div class="practice-icon">🕊️</div><div class="practice-name pn-zoro">Traditional Sky Burials</div><div class="practice-desc">Traditionally, Zoroastrians placed the dead on circular stone towers (dakhmas or "Towers of Silence") to be consumed by birds — keeping the pure earth from being polluted.</div></div>
+        <div class="practice-card pc-zoro"><div class="practice-icon">🎉</div><div class="practice-name pn-zoro">Nowruz (New Year)</div><div class="practice-desc">The Zoroastrian New Year, celebrated on the spring equinox (~March 21). One of the world's oldest holidays, now celebrated by over 300 million people across the Middle East and Central Asia.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">🤝</span><h2 class="section-title">Community & Belonging (The "B" of Belonging)</h2></div>
+      <div class="belonging-body">
+        <div class="belong-item belong-zoro"><div class="belong-title bt-zoro">🔥 The Fire Temple</div><div class="belong-desc">The Atash Behram (fire temple) is the spiritual and social center of Zoroastrian life. Communities gather here for prayers, festivals, and life ceremonies around the sacred flame.</div></div>
+        <div class="belong-item belong-zoro"><div class="belong-title bt-zoro">🧣 The Navjote Ceremony</div><div class="belong-desc">The initiation ceremony where a young person officially joins the Zoroastrian faith and receives their sudreh and kusti. A major community celebration marking their entry into the religious community.</div></div>
+        <div class="belong-item belong-zoro"><div class="belong-title bt-zoro">🌏 The Parsi Community</div><div class="belong-desc">Zoroastrians who fled to India over 1,000 years ago became known as Parsis. This tight-knit community — especially in Mumbai — maintains a powerful sense of shared history, heritage, and identity.</div></div>
+        <div class="belong-item belong-zoro"><div class="belong-title bt-zoro">🎉 Nowruz Celebration</div><div class="belong-desc">The spring New Year festival brings Zoroastrian families together for feasting and celebration. Though now widely shared across many cultures, it originated as a Zoroastrian holiday.</div></div>
+        <div class="belong-item belong-zoro"><div class="belong-title bt-zoro">📚 Ancient Heritage</div><div class="belong-desc">Being Zoroastrian means belonging to one of the oldest surviving religious traditions on Earth. The awareness of their ancient, world-shaping history creates a deep and proud identity — even within a small global community.</div></div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-header hdr-zoro"><span class="section-icon">📚</span><h2 class="section-title">Key Vocabulary</h2></div>
+      <div class="vocab-grid">
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Ahura Mazda</div><div class="vocab-def">The supreme God of Zoroastrianism, meaning "the Wise Lord" — all-knowing, all-good, creator of all that is righteous</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Zarathustra (Zoroaster)</div><div class="vocab-def">The prophet and founder of Zoroastrianism, who received a divine vision of Ahura Mazda</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Avesta</div><div class="vocab-def">The sacred scriptures of Zoroastrianism, containing the hymns (Gathas) composed by Zarathustra himself</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Asha</div><div class="vocab-def">Truth, righteousness, and cosmic order — the force of good that Ahura Mazda represents and humans should embrace</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Druj</div><div class="vocab-def">Lies, evil, and chaos — the destructive force that humans must reject in favor of truth and righteousness</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Angra Mainyu</div><div class="vocab-def">The evil, destructive spirit who opposes Ahura Mazda — the source of all suffering and wrongdoing in the world</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Sudreh & Kusti</div><div class="vocab-def">The sacred white garment and cord worn by initiated Zoroastrians as symbols of their commitment to the faith</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Navjote</div><div class="vocab-def">The initiation ceremony welcoming a young person into the Zoroastrian faith community</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Nowruz</div><div class="vocab-def">The Zoroastrian New Year celebrated at the spring equinox; one of the world's oldest holidays</div></div>
+        <div class="vocab-card vc-zoro"><div class="vocab-term vt-zoro">Parsi</div><div class="vocab-def">Zoroastrians who fled Persia to India over 1,000 years ago; today the largest surviving Zoroastrian community</div></div>
+      </div>
+    </div>
+    <div class="dyk-box dyk-zoro"><span class="dyk-icon">💡</span><div class="dyk-text"><strong>Did You Know?</strong>Many ideas that feel very familiar from Judaism, Christianity, and Islam — one God, angels, a devil, heaven and hell, resurrection of the dead, and a final day of judgment — <em>appeared in Zoroastrianism first</em>, centuries before these other religions developed. When Persian Emperor Cyrus the Great freed the Jewish people from Babylon in 539 BCE, Jews and Zoroastrians came into close contact — and scholars believe this is when many of these ideas were shared. Zoroastrianism may be the most influential religion most people have never heard of!</div></div>
+  </div>
+</div>
+
+<script>
+  function showPacket(id, btn) {
+    document.querySelectorAll('.packet').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('packet-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
